@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1087956497568",
+    "project_id": "spejz-app",
+    "storage_bucket": "spejz-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087956497568:android:9da62ca8f327290e00c5c5",
+        "android_client_info": {
+          "package_name": "com.wenovate.spejz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087956497568-mp06vc5umav3ol02olinqr71r44hmg0a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wenovate.spejz",
+            "certificate_hash": "de26e61b3a3c7a5299faff9c7abe2e787cfc2ff7"
+          }
+        },
+        {
+          "client_id": "1087956497568-n428fqt76ktekbrbj3vteel35ei9kp9r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWnm1nDKoEwk6BBNWzg5H8HSFOCfCDq4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087956497568-n428fqt76ktekbrbj3vteel35ei9kp9r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
