@@ -10,10 +10,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardElevation
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -27,39 +31,31 @@ import com.wenovate.spejz.data.model.Grocery
 
 @Composable
 fun GroceryListScreen(
+    householdId: String,
     viewModel: GroceryViewModel = hiltViewModel()
 ) {
-    var groceryName by remember { mutableStateOf("") }
-    val groceries by viewModel.groceries.observeAsState(emptyList())
+    viewModel.fetchGroceries(householdId)
+    val groceries by viewModel.groceries.collectAsState()
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        OutlinedTextField(
-            value = groceryName,
-            onValueChange = { groceryName = it },
-            label = { Text("Grocery Name") },
-            modifier = Modifier.fillMaxWidth()
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Button(
-            onClick = {
-                viewModel.addGrocery(Grocery(name = groceryName))
-                groceryName = ""
-            },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Add Grocery")
+    LazyColumn {
+        items(groceries) { grocery ->
+            GroceryItem(grocery)
         }
-        Spacer(modifier = Modifier.height(16.dp))
-        LazyColumn {
-            items(groceries) { grocery ->
-                Text(text = grocery.name)
-            }
+    }
+}
+
+@Composable
+fun GroceryItem(grocery: Grocery) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(text = grocery.name)
+            Text(text = "Expires: ${grocery.expirationDate}")
         }
     }
 }

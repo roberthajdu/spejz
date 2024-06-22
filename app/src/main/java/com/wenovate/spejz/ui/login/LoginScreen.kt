@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -31,6 +32,7 @@ import com.wenovate.spejz.MainActivity
 
 @Composable
 fun LoginScreen(
+    navController: NavController,
     state: SignInState,
     viewModel: LoginViewModel = hiltViewModel(),
     onGoogleSignInClick: () -> Unit
